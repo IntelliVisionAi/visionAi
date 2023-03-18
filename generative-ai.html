@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>IntelliVisionAi | Home</title>
+  <link rel="stylesheet" href="css/generative-ai.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="hero">
+    <div class="navbar">
+      <h2><a href="index.html">IntelliVisionAi</a></h2>
+      <a href="#" id="loginBtn">Sign In | Sign Up</a>
+    </div>
+
+    <div class="container">
+      <div class="card">
+          <div class="content1">
+            <iframe id="myIframe" src="https://api.together.xyz/open-chat?preview=1"></iframe>
+
+            <script>
+              var iframe = document.getElementById("myIframe");
+              iframe.onload = function() {
+                var iframeDoc = iframe.contentWindow.document;
+                var element = iframeDoc.querySelector("h1");
+                element.innerHTML = "New Heading Text";
+              }
+            </script>
+      </div>
+    </div>
+
+
+    <div class="side-bar">
+      <img src="css/img/menu.png" class="menu" alt="">
+      <div class="social-links">
+        <img src="css/img/fb.png">
+        <img src="css/img/ig.png">
+        <img src="css/img/tw.png">
+      </div>
+      <div class="useful-links">
+        <img src="css/img/share.png">
+        <img src="css/img/info.png">
+      </div>
+    </div>
+    <div class="bubbles">
+      <img src="css/img/bubble.png">
+      <img src="css/img/bubble.png">
+      <img src="css/img/bubble.png">
+      <img src="css/img/bubble.png">
+      <img src="css/img/bubble.png">
+      <img src="css/img/bubble.png">
+      <img src="css/img/bubble.png">
+      <img src="css/img/bubble.png">
+    </div>
+  </div>
+
+  <!-- Modal code -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <p>There is no need to create an account at this moment. All services are currently in testing mode and will be avaible fully. Until then all beta and tests are free. </p>
+      <a href="#home" id="continueBtn">Continue</a>
+    </div>
+  </div>
+
+  <script>
+    // Get the modal element
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("loginBtn");
+
+    // Get the continue button
+    var continueBtn = document.getElementById("continueBtn");
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on the continue button, close the modal
+    continueBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+  <script src="js/txt-spch.js"></script>
+</body>
+</html>

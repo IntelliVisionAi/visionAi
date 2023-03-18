@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>IntelliVisionAi | Home</title>
+  <link rel="stylesheet" href="css/explore.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="hero">
+    <div class="navbar">
+      <h2><a href="index.html">IntelliVisionAi</a></h2>
+      <a href="#" id="loginBtn">Sign In | Sign Up</a>
+    </div>
+    
+    <div class="topic">
+      <H1>All Services avaible through VisionAi</H1>
+    </div>
+
+
+    <div class="container">
+        <div class="card">
+            <div class="content1">
+                <h2>01</h2>
+                <h3>Image To Text</h3>
+                <p>Upload an image and you will be able to copy and paste the text from it</p>
+                <a href="img-txt.html">Visit</a>
+            </div>
+        </div>
+        <div class="card1">
+            <div class="content1">
+                <h2>02</h2>
+                <h3>Speech To Text</h3>
+                <p>Use realistic natural voices to read any text you want. </p>
+                <a href="txt-spch.html">Visit</a>
+            </div>
+        </div>
+        <div class="card2">
+          <div class="content1">
+              <h2>03</h2>
+              <h3>Generative Ai</h3>
+              <p>Write a prompt and the ai will give you answer. Based off of OpenChatKit API</p>
+              <a href="generative-ai.html">Visit</a>
+          </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="bubbles">
+      <img src="css/img/bubble.png">
+      <img src="css/img/bubble.png">
+      <img src="css/img/bubble.png">
+      <img src="css/img/bubble.png">
+      <img src="css/img/bubble.png">
+      <img src="css/img/bubble.png">
+      <img src="css/img/bubble.png">
+      <img src="css/img/bubble.png">
+    </div>
+  </div>
+
+  <!-- Modal code -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <p>There is no need to create an account at this moment. All services are currently in testing mode and will be avaible fully. Until then all beta and tests are free. </p>
+      <a href="#home" id="continueBtn">Continue</a>
+    </div>
+  </div>
+
+  <script>
+    // Get the modal element
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("loginBtn");
+
+    // Get the continue button
+    var continueBtn = document.getElementById("continueBtn");
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on the continue button, close the modal
+    continueBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+  <script type="text/javascript" src="js/vanilla-tilt.js"></script>
+  <script type="text/javascript">
+    VanillaTilt.init(document.querySelector(".card"), {
+      max: 5,
+      speed: 400,
+      glare: true,
+      "max-glare": 1,
+    });
+  </script>
+    <script type="text/javascript">
+      VanillaTilt.init(document.querySelector(".card1"), {
+        max: 5,
+        speed: 400,
+        glare: true,
+        "max-glare": 1,
+      });
+    </script>
+        <script type="text/javascript">
+          VanillaTilt.init(document.querySelector(".card2"), {
+            max: 5,
+            speed: 400,
+            glare: true,
+            "max-glare": 1,
+          });
+        </script>
+</body>
+</html>
