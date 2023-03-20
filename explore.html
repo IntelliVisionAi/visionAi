@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="css/img/icon.png">
 </head>
 <body>
   <div class="hero">
@@ -17,6 +18,7 @@
     
     <div class="topic">
       <h1>All Services avaible through VisionAi</h1>
+      <p>(Click or Hover Over Cards To Reveal Them)</p>
     </div>
 
 
@@ -40,28 +42,44 @@
         <div class="card2">
           <div class="content1">
               <h2>03</h2>
-              <h3>Generative Ai</h3>
-              <p>Write a prompt and the ai will give you answer. Based off of OpenChatKit API</p>
-              <a href="generative-ai.html">Visit</a>
+              <h3>Ai Translation</h3>
+              <p>AI translation uses algorithms to automatically translate text from one language to another.
+              </p>
+              <a href="translate.html">Visit</a>
           </div>
       </div>
     </div>
 
-
-
-
-
-    <div class="bubbles">
-      <img src="css/img/bubble.png">
-      <img src="css/img/bubble.png">
-      <img src="css/img/bubble.png">
-      <img src="css/img/bubble.png">
-      <img src="css/img/bubble.png">
-      <img src="css/img/bubble.png">
-      <img src="css/img/bubble.png">
-      <img src="css/img/bubble.png">
+    <div class="container">
+      <div class="card3">
+          <div class="content1">
+              <h2>04</h2>
+              <h3>ProxyAi</h3>
+              <p>Neural Network created within a server to hide ip address and send to a secure location without the ip noticing.</p>
+              <a href="https://adjoining-famous-plain.glitch.me/">Visit</a>
+          </div>
+      </div>
+      <div class="card4">
+          <div class="content1">
+              <h2>05</h2>
+              <h3>InfoAi V1</h3>
+              <p>InfoAi V1 is an AI-powered chatbot that uses natural language processing to scan for information based on user prompts, providing helpful and accurate responses.</p>
+              <a href="InfoAi1.html">Visit</a>
+          </div>
+      </div>
+      <div class="card5">
+        <div class="content1">
+            <h2>06</h2>
+            <h3>InfoAi V2 Turbo</h3>
+            <p>Like InfoAi V1 but its on steroids and better.</p>
+            <a href="infoAi2.html">Visit</a>
+        </div>
     </div>
   </div>
+</div>
+  </div>
+
+  
 
   <!-- Modal code -->
   <div id="myModal" class="modal">
@@ -123,5 +141,29 @@
             "max-glare": 1,
           });
         </script>
+                <script type="text/javascript">
+                  VanillaTilt.init(document.querySelector(".card3"), {
+                    max: 5,
+                    speed: 400,
+                    glare: true,
+                    "max-glare": 1,
+                  });
+                </script>
+                        <script type="text/javascript">
+                          VanillaTilt.init(document.querySelector(".card4"), {
+                            max: 5,
+                            speed: 400,
+                            glare: true,
+                            "max-glare": 1,
+                          });
+                        </script>
+                                <script type="text/javascript">
+                                  VanillaTilt.init(document.querySelector(".card5"), {
+                                    max: 5,
+                                    speed: 400,
+                                    glare: true,
+                                    "max-glare": 1,
+                                  });
+                                </script>
 </body>
 </html>

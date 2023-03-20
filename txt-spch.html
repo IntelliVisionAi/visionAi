@@ -7,106 +7,43 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="css/img/icon.png">
 </head>
 <body>
   <div class="hero">
     <div class="navbar">
       <h2><a href="index.html">IntelliVisionAi</a></h2>
-      <a href="#" id="loginBtn">Sign Up</a>
+      <a href="explore.html" id="loginBtn">Explore</a>
     </div>
 
     <div class="container">
-      <div class="card">
-          <div class="content1">
-            <h1>Text-to-Speech App</h1>
-            <div class="form">
-              <textarea id="text" placeholder="Enter your text here..."></textarea>
-              <div class="options">
-                <select id="voices">
-                  <option value="">Select a voice</option>
-                </select>
-                <div class="slider-container">
-                  <div class="slider">
-                    <label for="volume">Volume:</label>
-                    <input type="range" id="volume" min="0" max="1" step="0.1" value="1" />
-                  </div>
-                  <div class="slider">
-                    <label for="pitch">Pitch:</label>
-                    <input type="range" id="pitch" min="0.1" max="2" step="0.1" value="1" />
-                  </div>
-                  <div class="slider">
-                    <label for="rate">Speed:</label>
-                    <input type="range" id="rate" min="0.1" max="2" step="0.1" value="1" />
-                  </div>
-                </div>
-              </div>
-              <button id="speak">Speak</button>
-            </div>
-          </div>
-      </div>
+      <h1>Text-to-Speech</h1>
+      <form>
+        <div class="form-group">
+          <label for="voice-select">Voice:</label>
+          <select id="voice-select"></select>
+        </div>
+        <div class="form-group">
+          <label for="volume-slider">Volume: <span id="volume-value">50</span></label>
+          <input type="range" id="volume-slider" min="0" max="100" value="50">
+        </div>
+        <div class="form-group">
+          <label for="pitch-slider">Pitch: <span id="pitch-value">1</span></label>
+          <input type="range" id="pitch-slider" min="0" max="2" step="0.1" value="1">
+        </div>
+        <div class="form-group">
+          <label for="speed-slider">Speed: <span id="speed-value">1</span></label>
+          <input type="range" id="speed-slider" min="0.1" max="10" step="0.1" value="1">
+        </div>
+        <div class="form-group">
+          <label for="text-input">Text:</label>
+          <textarea id="text-input" rows="5"></textarea>
+        </div>
+        <div class="form-group">
+          <button id="speak-button">Speak</button>
+        </div>
+      </form>
     </div>
-
-
-    <div class="side-bar">
-      <img src="css/img/menu.png" class="menu" alt="">
-      <div class="social-links">
-        <img src="css/img/fb.png">
-        <img src="css/img/ig.png">
-        <img src="css/img/tw.png">
-      </div>
-      <div class="useful-links">
-        <img src="css/img/share.png">
-        <img src="css/img/info.png">
-      </div>
-    </div>
-    <div class="bubbles">
-      <img src="css/img/bubble.png">
-      <img src="css/img/bubble.png">
-      <img src="css/img/bubble.png">
-      <img src="css/img/bubble.png">
-      <img src="css/img/bubble.png">
-      <img src="css/img/bubble.png">
-      <img src="css/img/bubble.png">
-      <img src="css/img/bubble.png">
-    </div>
-  </div>
-
-  <!-- Modal code -->
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <p>There is no need to create an account at this moment. All services are currently in testing mode and will be avaible fully. Until then all beta and tests are free. </p>
-      <a href="#home" id="continueBtn">Continue</a>
-    </div>
-  </div>
-
-  <script>
-    // Get the modal element
-    var modal = document.getElementById("myModal");
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("loginBtn");
-
-    // Get the continue button
-    var continueBtn = document.getElementById("continueBtn");
-
-    // When the user clicks on the button, open the modal
-    btn.onclick = function() {
-      modal.style.display = "block";
-    }
-
-    // When the user clicks on the continue button, close the modal
-    continueBtn.onclick = function() {
-      modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-  </script>
-
-  <script src="js/txt-spch.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

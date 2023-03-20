@@ -4,10 +4,13 @@
     font-family: 'Source Code Pro', monospace;
 }
 
+body {
+  background: #000000;
+}
 .hero {
     width: 100%;
     height: 100vh;
-    background-image: url(img/bg.png);
+    background-image: url(img/bg.gif);
     background-size: cover;
     background-position: center;
     position: relative;
@@ -106,13 +109,6 @@ h2 {
     top: 0;
 }
 
-.menu {
-    display: block;
-    width: 25px;
-    margin: 40px auto 0;
-    cursor: pointer;
-}
-
 .social-links img, .useful-links img{
     width: 25px;
     margin: 5px auto;
@@ -135,22 +131,6 @@ h2 {
     position: absolute;
     bottom: 30px;
 }
-
-.bubbles img {
-    width: 50px;
-    animation: bubble 7s linear infinite;
-}
-
-.bubbles {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    position: absolute;
-    bottom: -110px;
-    bottom: -80;
-}
-
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -180,75 +160,31 @@ h2 {
     padding-bottom: 32px;
   }
 
-  
-@keyframes bubble {
-    0% {
-        transform: translateY(0);
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    70% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-80vh);
-        opacity: 0;
-    }
-}
-
-.bubbles img:nth-child(1) {
-    animation-delay: 2s;
-    width: 25px;
-}
-.bubbles img:nth-child(2) {
-    animation-delay: 1s;
-    width: 25px;
-}
-.bubbles img:nth-child(3) {
-    animation-delay: 3s;
-}
-.bubbles img:nth-child(4) {
-    animation-delay: 4.5s;
-}
-.bubbles img:nth-child(5) {
-    animation-delay: 3s;
-}
-.bubbles img:nth-child(6) {
-    animation-delay: 6s;
-    width: 20px;
-}
-.bubbles img:nth-child(7) {
-    animation-delay: 7s;
-    width: 30px;
-}
 
 
-/* Scroll Bar */
+/* SCrollbar */
 
 /* width */
 ::-webkit-scrollbar {
-    width: 20px;
-  }
+    width: .15em;
+}
   
-  /* Track */
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgba(128, 128, 128, 0); 
     border-radius: 10px;
-  }
+}
    
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: red; 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(172, 51, 162, 0.11); 
     border-radius: 10px;
-  }
+}
   
-  /* Handle on hover */
+/* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #b30000; 
-  }
-
+    background: rgba(172, 51, 162, 0.068); 
+}
 @media screen and (max-width: 600px) {
     h1{
         font-size: 30px;
@@ -263,7 +199,7 @@ h2 {
 
     .hero{
         background-repeat: no-repeat;
-        background-size: 420%;
+        background-size: 350%;
     }
 
     .navbar {
@@ -279,6 +215,21 @@ h2 {
         margin-right: 12px;
         margin-top: 12px;
     }
+
+    .modal-content {
+        background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+        backdrop-filter: blur(2px); /* apply a 5-pixel blur */
+        margin: 50% auto; /* 15% from the top and centered */
+        padding: 50px;
+        border: 1px solid #ffffff;
+        width: 50%; /* Could be more or less, depending on screen size */
+    }
+
+    .modal p {
+        font-size: 18px;
+        color: white;
+        padding-bottom: 32px;
+      }
 }
 
 @media screen and (max-width: 1200px) and (min-width: 600px) {
@@ -306,5 +257,11 @@ h2 {
         font-size: 30px;
         margin: 10px 0 30px;
         line-height: 50px;
+    }
+}
+
+@media screen and (max-width: 1500px) and (min-width: 1200px) {
+    .navbar h2 {
+        padding-top: 10px;
     }
 }

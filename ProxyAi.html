@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>IntelliVisionAi | Home</title>
+  <link rel="stylesheet" href="css/txt-img.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="css/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="hero">
+    <div class="navbar">
+      <h2><a href="index.html">IntelliVisionAi</a></h2>
+      <a href="#" id="loginBtn">Sign Up</a>
+    </div>
+
+
+
+    <div class="container">
+        <iframe src="https://adjoining-famous-plain.glitch.me/"></iframe>
+    </div>
+
+  <!-- Modal code -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <p>There is no need to create an account at this moment. All services are currently in testing mode and will be avaible fully. Until then all beta and tests are free. </p>
+      <a href="#home" id="continueBtn">Continue</a>
+    </div>
+  </div>
+
+  <script>
+    // Get the modal element
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("loginBtn");
+
+    // Get the continue button
+    var continueBtn = document.getElementById("continueBtn");
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on the continue button, close the modal
+    continueBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
