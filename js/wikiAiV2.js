@@ -1,9 +1,5 @@
-const endpointUrl = 'https://en.wikipedia.org/w/api.php';
-const format = 'json';
-const action = 'query';
-const prop = 'extracts';
-const origin = '*';
-
+const endpointUrl = 'http://api.mathjs.org/v4/';
+const wikipediaEndpointUrl = 'https://en.wikipedia.org/w/api.php';
 const chatContainer = document.querySelector('.chat-container');
 const input = document.querySelector('input');
 const button = document.querySelector('button');
@@ -17,21 +13,46 @@ input.addEventListener('keydown', event => {
 
 function sendMessage() {
   const message = input.value.trim();
+  const api = document.querySelector("#api-select").value;
 
   if (message !== '') {
     addChatBubble(message, true);
     input.value = '';
 
-    getWikipediaData(message)
-      .then(extract => {
-        addChatBubble(extract, false);
-      })
-      .catch(error => {
-        console.error(error);
-        addChatBubble(error.message, false);
-      });
+    if (api === 'mathjs') {
+      fetch(`${endpointUrl}?expr=${encodeURIComponent(message)}`)
+        .then(response => response.text())
+        .then(result => {
+          addChatBubble(result, false);
+        })
+        .catch(error => {
+          console.error(error);
+          addChatBubble(error.message, false);
+        });
+      } else if (api === 'wikipedia') {
+      getWikipediaData(message)
+        .then(extract => {
+          addChatBubble(extract, false);
+        })
+        .catch(error => {
+          console.error(error);
+          addChatBubble(error.message, false);
+        });
+        
+      } else if (api === 'dictionary') {
+        fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${encodeURIComponent(message)}?key=29443b6f-f2cd-4fdb-857d-43e6e27f3e34`)
+          .then(response => response.json())
+          .then(data => {
+            const definition = data[0].shortdef[0];
+            addChatBubble(definition, false);
+          })
+          .catch(error => {
+            console.error(error);
+            addChatBubble(error.message, false);
+          });
+      }
+    }
   }
-}
 
 function addChatBubble(text, isUser) {
   const chatBubble = document.createElement('div');
@@ -55,36 +76,37 @@ function addChatBubble(text, isUser) {
   }, 25);
 }
 
-
 async function getWikipediaData(searchTerm) {
-    const params = new URLSearchParams({
-        format: format,
-        action: action,
-        prop: prop,
-        exintro: true, // Limit to introduction section
-        titles: searchTerm,
-        origin: origin
-    });
+  const format = 'json';
+  const action = 'query';
+  const prop = 'extracts';
+  const origin = '*';
 
-    const response = await fetch(`${endpointUrl}?${params}`);
-    const data = await response.json();
+  const params = new URLSearchParams({
+    format: format,
+    action: action,
+    prop: prop,
+    exintro: true,
+    titles: searchTerm,
+    origin: origin,
+  });
 
-    const page = data.query.pages[Object.keys(data.query.pages)[0]];
+  const response = await fetch(`${wikipediaEndpointUrl}?${params}`);
+  const data = await response.json();
 
-    if (!page || !page.extract) {
-        throw new Error(`No page found for "${searchTerm}".`);
-    }
+  const page = data.query.pages[Object.keys(data.query.pages)[0]];
 
-    // Remove HTML tags, bullet points, and listen markers
-    const extract = page.extract
-        .replace(/<[^>]*>/g, '') // Remove HTML tags
-        .replace(/^\s*[\*\•]\s*/gm, '') // Remove bullet points
-        .replace(/{{listen[^}]*}}|\(\(listen\)\)/g, '') // Remove listen markers
-        .replace(/\s*\(([^)]*)\)\s*/g, ''); // Remove parentheses
+  if (!page || !page.extract) {
+    throw new Error(`No page found for "${searchTerm}".`);
+  }
 
-    // Limit to 3 sentences
-    const summary = extract.split('.').slice(0, 5).join('.') + '.';
+  const extract = page.extract
+  .replace(/<[^>]*>/g, '') // Remove HTML tags
+  .replace(/^\s*[\*\•]\s*/gm, '') // Remove bullet points
+  .replace(/{{listen[^}]*}}|\(\(listen\)\)/g, '') // Remove listen markers
+  .replace(/\s*\(([^)]*)\)\s*/g, ''); // Remove parentheses
 
-    return summary;
+  const summary = extract.split('.').slice(0, 5).join('.') + '.';
+
+  return summary;
 }
-  

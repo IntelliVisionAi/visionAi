@@ -200,6 +200,25 @@ h2 {
     color: #ffffff; /* set the text color */
   }
 
+
+  #api-select {
+    background-color: black;
+    color: white;
+    padding: 10px 25px;
+    background: transparent;
+    border: 1.5px solid #fff;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+    #api-select option{
+      background-color: black;
+      color: white;
+    }
+
+
   /* SCrollbar */
 
 /* width */
@@ -215,13 +234,13 @@ h2 {
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgba(172, 51, 162, 0.11); 
+  background: rgba(0, 0, 0, 0.11); 
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(172, 51, 162, 0.068); 
+  background: rgba(0, 0, 0, 0.068); 
 }
 @media screen and (max-width: 600px) {
   h1{
@@ -263,6 +282,35 @@ h2 {
     padding: 0rem;
     margin-bottom: 20px;
 }
+
+#api-select {
+  background-color: black;
+  color: white;
+  padding: 10px 10px;
+  background: transparent;
+  border: 1.5px solid #fff;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+  #api-select option{
+    background-color: black;
+    color: white;
+  }
+
+    
+  .input-container input {
+    flex: 1;
+    height: 40px;
+    width: 20px;
+    margin-right: 16px;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+  }
 }
 
 @media screen and (max-width: 1200px) and (min-width: 600px) {

@@ -15,7 +15,7 @@
           <h2><a href="index.html">IntelliVisionAi</a></h2>
           <a href="explore.html" id="loginBtn">Explore</a>
         </div>
-        <h1>WikiAi V2 Turbo</h1>
+        <h1>Vision Ai Turbo</h1>
         <div class="container">
           <div class="chat-container">
             <div class="chat-bubble bot">
@@ -24,10 +24,16 @@
           </div>
           <div class="input-container">
             <input type="text" placeholder="Type your message...">
-            <button>Send</button>
+            <select id="api-select">
+              <option value="wikipedia">Info</option>
+              <option value="mathjs">Math</option>
+              <option value="dictionary">Word</option>
+            </select>
+            <button onclick="sendMessage()">Send</button>
           </div>
         </div>
       </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.4/math.min.js"></script>
     <script src="js/wikiAiV2.js"></script>
   </body>
 </html>

@@ -177,13 +177,13 @@ h2 {
    
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgba(172, 51, 162, 0.11); 
+    background: rgba(0, 0, 0, 0.11); 
     border-radius: 10px;
 }
   
 /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(172, 51, 162, 0.068); 
+    background: rgba(0, 0, 0, 0.068); 
 }
 @media screen and (max-width: 600px) {
     h1{
