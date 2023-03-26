@@ -18,6 +18,11 @@ body {
   background: #000000;
 }
 
+.chat-bubble.bot img {
+  max-width: 100%;
+  max-height: 600px;
+  object-fit: contain;
+}
 iframe {
     width: 100%;
     height: 550px; /* set the height to whatever you need */
@@ -204,13 +209,13 @@ h2 {
   #api-select {
     background-color: black;
     color: white;
-    padding: 10px 25px;
-    background: transparent;
-    border: 1.5px solid #fff;
-    border-radius: 20px;
     outline: none;
     cursor: pointer;
-    margin-right: 10px;
+    width: 10%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: center;
   }
 
     #api-select option{
@@ -272,6 +277,11 @@ h2 {
       margin-right: 12px;
       margin-top: 12px;
   }
+  .chat-bubble.bot img {
+    max-width: 100%;
+    max-height: 800px;
+    object-fit: contain;
+  }
 
   .container {
     background-color: #ffffff11;
@@ -286,19 +296,20 @@ h2 {
 #api-select {
   background-color: black;
   color: white;
-  padding: 10px 10px;
-  background: transparent;
-  border: 1.5px solid #fff;
-  border-radius: 20px;
   outline: none;
   cursor: pointer;
-  margin-right: 10px;
+  width: 25%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  text-align: center;
+  margin-left: 5px;
 }
 
-  #api-select option{
-    background-color: black;
-    color: white;
-  }
+#api-select option{
+  background-color: black;
+  color: white;
+}
 
     
   .input-container input {

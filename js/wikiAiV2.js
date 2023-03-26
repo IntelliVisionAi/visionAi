@@ -1,5 +1,7 @@
 const endpointUrl = 'http://api.mathjs.org/v4/';
 const wikipediaEndpointUrl = 'https://en.wikipedia.org/w/api.php';
+const unsplashAccessKey = 'o1t89hbooU9dUtQ9xv50O5MPCFu9Fz5ov8JlvVRmdU0';
+const unsplashEndpointUrl = 'https://api.unsplash.com/photos/random';
 const chatContainer = document.querySelector('.chat-container');
 const input = document.querySelector('input');
 const button = document.querySelector('button');
@@ -11,7 +13,7 @@ input.addEventListener('keydown', event => {
   }
 });
 
-function sendMessage() {
+async function sendMessage() {
   const message = input.value.trim();
   const api = document.querySelector("#api-select").value;
 
@@ -19,63 +21,76 @@ function sendMessage() {
     addChatBubble(message, true);
     input.value = '';
 
-    if (api === 'mathjs') {
-      fetch(`${endpointUrl}?expr=${encodeURIComponent(message)}`)
-        .then(response => response.text())
-        .then(result => {
-          addChatBubble(result, false);
-        })
-        .catch(error => {
-          console.error(error);
-          addChatBubble(error.message, false);
-        });
+    try {
+      if (api === 'mathjs') {
+        const response = await fetch(`${endpointUrl}?expr=${encodeURIComponent(message)}`);
+        const result = await response.text();
+        addChatBubble(result, false);
       } else if (api === 'wikipedia') {
-      getWikipediaData(message)
-        .then(extract => {
-          addChatBubble(extract, false);
-        })
-        .catch(error => {
-          console.error(error);
-          addChatBubble(error.message, false);
-        });
-        
+        const extract = await getWikipediaData(message);
+        addChatBubble(extract, false);
       } else if (api === 'dictionary') {
-        fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${encodeURIComponent(message)}?key=29443b6f-f2cd-4fdb-857d-43e6e27f3e34`)
-          .then(response => response.json())
-          .then(data => {
-            const definition = data[0].shortdef[0];
-            addChatBubble(definition, false);
-          })
-          .catch(error => {
-            console.error(error);
-            addChatBubble(error.message, false);
-          });
+        const response = await fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${encodeURIComponent(message)}?key=29443b6f-f2cd-4fdb-857d-43e6e27f3e34`);
+        const data = await response.json();
+        const definition = data[0].shortdef[0];
+        addChatBubble(definition, false);
+      } else if (api === 'image') {
+        const imageUrl = await getRandomImage(message);
+        if (imageUrl) {
+          addChatBubble(imageUrl, false, true);
+        } else {
+          addChatBubble("Sorry, I couldn't find an image for that keyword.", false);
+        }
       }
+    } catch (error) {
+      console.error(error);
+      addChatBubble(error.message, false);
+    }
+  }
+}
+
+async function getRandomImage(keyword) {
+  const query = keyword ? encodeURIComponent(keyword) : '';
+  const url = `${unsplashEndpointUrl}?query=${query}&client_id=${unsplashAccessKey}`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.urls.regular;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+function addChatBubble(text, isUser, isImage) {
+    const chatBubble = document.createElement('div');
+    chatBubble.classList.add('chat-bubble');
+    chatBubble.classList.add(isUser ? 'user' : 'bot');
+    chatContainer.appendChild(chatBubble);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  
+    if (isImage) {
+      const image = document.createElement('img');
+      image.src = text;
+      chatBubble.appendChild(image);
+    } else {
+      // Split the text into characters and add them one by one with a delay
+      const characters = text.split('');
+      let i = 0;
+      const intervalId = setInterval(() => {
+        if (i < characters.length) {
+          const character = characters[i];
+          chatBubble.innerHTML += character;
+          chatContainer.scrollTop = chatContainer.scrollHeight;
+          i++;
+        } else {
+          clearInterval(intervalId);
+        }
+      }, 25);
     }
   }
 
-function addChatBubble(text, isUser) {
-  const chatBubble = document.createElement('div');
-  chatBubble.classList.add('chat-bubble');
-  chatBubble.classList.add(isUser ? 'user' : 'bot');
-  chatContainer.appendChild(chatBubble);
-  chatContainer.scrollTop = chatContainer.scrollHeight;
-
-  // Split the text into characters and add them one by one with a delay
-  const characters = text.split('');
-  let i = 0;
-  const intervalId = setInterval(() => {
-    if (i < characters.length) {
-      const character = characters[i];
-      chatBubble.innerHTML += character;
-      chatContainer.scrollTop = chatContainer.scrollHeight;
-      i++;
-    } else {
-      clearInterval(intervalId);
-    }
-  }, 25);
-}
-
+  
 async function getWikipediaData(searchTerm) {
   const format = 'json';
   const action = 'query';
